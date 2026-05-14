@@ -14,8 +14,9 @@
             <p class="text-sm font-semibold text-red-800">Halaman Terproteksi — Surat Rahasia</p>
             <p class="text-xs text-red-600 mt-0.5">Akses halaman ini dicatat dalam log aktivitas. Dilarang mendistribusikan konten kepada pihak yang tidak berwenang.</p>
         </div>
-        <form action="{{ route('surat.rahasia') }}" method="GET" class="ml-auto">
-            <button type="submit" onclick="clearSession()" class="text-xs text-red-600 hover:text-red-800 font-semibold flex items-center gap-1 flex-shrink-0">
+        <form action="{{ route('surat.rahasia.lock') }}" method="POST" class="ml-auto">
+            @csrf
+            <button type="submit" class="text-xs text-red-600 hover:text-red-800 font-semibold flex items-center gap-1 flex-shrink-0">
                 <span class="material-symbols-outlined text-sm">lock</span>
                 Kunci
             </button>
@@ -110,13 +111,4 @@
         @endif
     </div>
 </div>
-@endsection
-
-@section('scripts')
-<script>
-function clearSession() {
-    // Expire the session flag via AJAX or reload
-    fetch('/surat/store', { method: 'GET' }); // Just navigate away, session clears on next visit
-}
-</script>
 @endsection

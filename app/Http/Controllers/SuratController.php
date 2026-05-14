@@ -86,6 +86,14 @@ class SuratController extends Controller
         return back()->withErrors(['password' => 'Password salah. Akses ditolak.']);
     }
 
+    public function lockRahasia(Request $request)
+    {
+        $request->session()->forget('rahasia_verified');
+
+        return redirect()->route('surat.rahasia')
+            ->with('success', 'Halaman surat rahasia berhasil dikunci.');
+    }
+
     public function create()
     {
         return view('surat.input');

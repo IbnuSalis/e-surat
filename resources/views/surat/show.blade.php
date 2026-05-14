@@ -95,6 +95,7 @@
                     <span class="material-symbols-outlined text-xl">arrow_back</span>
                     Kembali
                 </a>
+                @if(auth()->user()->isAdmin())
                 <form id="del-{{ $surat->id }}" action="{{ route('surat.destroy', $surat->id) }}" method="POST" class="ml-auto">
                     @csrf @method('DELETE')
                     <button type="button" onclick="confirmDelete('del-{{ $surat->id }}')" class="btn-danger">
@@ -102,6 +103,7 @@
                         Hapus Surat
                     </button>
                 </form>
+                @endif
             </div>
         </div>
     </div>

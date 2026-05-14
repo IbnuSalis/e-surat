@@ -123,12 +123,14 @@
                                 <a href="{{ route('surat.edit', $surat->id) }}" class="btn-icon btn-icon-edit" title="Edit">
                                     <span class="material-symbols-outlined text-lg">edit</span>
                                 </a>
+                                @if(auth()->user()->isAdmin())
                                 <form id="del-{{ $surat->id }}" action="{{ route('surat.destroy', $surat->id) }}" method="POST">
                                     @csrf @method('DELETE')
                                     <button type="button" onclick="confirmDelete('del-{{ $surat->id }}')" class="btn-icon btn-icon-delete" title="Hapus">
                                         <span class="material-symbols-outlined text-lg">delete</span>
                                     </button>
                                 </form>
+                                @endif
                             </div>
                         </td>
                     </tr>
